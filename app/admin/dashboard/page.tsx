@@ -25,7 +25,7 @@ const Dashboard = () => {
     .catch(error=>console.log(error))
     .finally(()=>dispatch(setLoading(false)))
   }
-    ,[updateTable])
+    ,[dispatch, updateTable])
   return (
     <div>Dashboard</div>
   )
