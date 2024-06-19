@@ -1,6 +1,7 @@
 "use client"
 
 import Login from "@/components/admin-panel/Login";
+import SideBar from "@/components/admin-panel/Sidebar";
 import Loader from "@/components/admin-panel/loader";
 import { useAppSelector } from "@/redux/hooks";
 import { useSession } from "next-auth/react";
@@ -14,7 +15,7 @@ const Layout = ({children}:{children:ReactNode}) => {
   }
   return (
     <div className="flex">
-    {/* <SideBar/> */}
+    <SideBar/>
     <div className="w-full h-full">
       {/* <Navbar/> */}
       <div className="bg-gray-200 p-4 h-[calc(100vh-64px)]">{children}</div>
