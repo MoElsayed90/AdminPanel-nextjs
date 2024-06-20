@@ -1,6 +1,9 @@
 import { IProduct } from "@/app/admin/dashboard/page";
+import { setLoading } from "@/redux/features/loadingSlice";
 import { setProduct } from "@/redux/features/productSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { makeToast } from "@/utils/helper";
+import axios from "axios";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { CiEdit } from "react-icons/ci";
@@ -19,8 +22,18 @@ const ProductRow = ({srNo,product,setOpenPopup,setUpdateTable}:IProps) => {
     setOpenPopup(true)
   }
   const onDelete = () => {
-    //will do later
-    
+    dispatch(setLoading(true))
+    const payload = {
+      fileKey:product.fileKey
+    }
+    axios.delete("/api/uploadthing",{data:payload}).then(res=>{
+      console.log(res.data)
+      axios.delete(`/api/delete_product/${product._id}`).then(res=>{
+        console.log(res.data)
+        makeToast("Product deleted Successfully")
+        setUpdateTable((prevState)=>!prevState)
+      }).catch((error)=>console.log(error)).finally(()=>dispatch(setLoading(false)))
+    }).catch((error)=>console.log(error))
   }
   return (
   <>
@@ -41,8 +54,14 @@ const ProductRow = ({srNo,product,setOpenPopup,setUpdateTable}:IProps) => {
     </td>
     <td>
       <div className="text-2xl flex items-center gap-2 text-gray-600">
-        <CiEdit className="cursor-pointer hover:text-black"/>
-        <RiDeleteBin5Line className="text-[20px] cursor-pointer hover:text-red-600"/>
+        <CiEdit 
+        className="cursor-pointer hover:text-black"
+        onClick={onEdit}
+        />
+        <RiDeleteBin5Line 
+        className="text-[20px] cursor-pointer hover:text-red-600"
+        onClick={onDelete}
+        />
       </div>
     </td>
   </tr>

@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import { withUt } from "uploadthing/tw";
 
-const config: Config = {
+export default withUt({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,18 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors:{
-        accent:"#0989FF",
-        topHeadingPrimary:"#010f1c",
-        topHeadingSecondary:"#021d35",
-        pink:"#FD4B6B"
+      colors: {
+        accent: "#0989FF",
+        topHeadingPrimary: "#010f1c",
+        topHeadingSecondary: "#021d35",
+        pink: "#FD4B6B",
       },
-      container:{
-        center:true,
-        padding:"15px"
+      container: {
+        center: true,
+        padding: "15px",
       }
     },
   },
   plugins: [],
-};
-export default config;
+});

@@ -22,7 +22,7 @@ const Dashboard = () => {
   const dispatch = useAppDispatch()
   useEffect(()=>{
     dispatch(setLoading(true))
-    axios.get("api/get_products")
+    axios.get("/api/get_products")
     .then((res)=> setProducts(res.data))
     .catch(error=>console.log(error))
     .finally(()=>dispatch(setLoading(false)))

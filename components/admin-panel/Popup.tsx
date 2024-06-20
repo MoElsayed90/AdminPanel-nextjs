@@ -33,16 +33,16 @@ const Popup = ({ setOpenPopup, setUpdateTable }: IProp) => {
       )
   }
   return (
-    <div className="fixed top-0 w-full h-screen bg-[#00000070] grid place-items-center">
+    <div className="fixed top-0 left-0 w-full h-screen bg-[#00000070] grid place-items-center">
       <div className="bg-white w-[700px] py-8 rounded-lg text-center relative">
         <IoIosCloseCircleOutline
           className="absolute text-2xl right-0 top-0 m-4 cursor-pointer hover:text-red-600"
           onClick={() => setOpenPopup(false)}
         />
         <h2 className="text-2xl mt-3">Edit Product</h2>
-        <form className="mt-6 w-fit space-y-4 mx-auto" onSubmit={handleSubmit}>
+        <form className="  mt-6 w-fit space-y-4 mx-auto" onSubmit={handleSubmit}>
           <input
-            className="border bloc border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
+            className="border block border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
             type="text"
             placeholder="Name"
             value={inputData.name}
@@ -50,7 +50,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: IProp) => {
             required
           />
           <input
-            className="border bloc border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
+            className="border block border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
             type="text"
             placeholder="Category"
             value={inputData.category}
@@ -58,7 +58,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: IProp) => {
             required
           />
           <input
-            className="border bloc border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
+            className="border block border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
             type="text"
             placeholder="Price"
             value={inputData.price}
